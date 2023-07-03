@@ -47,9 +47,8 @@ function saveArticleAndRedirect(path){
     
         try{
             article = await article.save()
-            console.log(article.id)
-            //redirect to display article that was just created
-            res.redirect(`articles/${article.slug}`)
+            //render article that was just created or edited
+            res.render('articles/show',{article: article})
         }catch (err){
             console.log(err)
             //done to prefill fields with already prev entered data
